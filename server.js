@@ -22,6 +22,11 @@ app.get('/ping', (req, res) => {
   res.send('pong');
 });
 
+// Ruta para health check requerido por Render
+app.get('/healthz', (req, res) => {
+  res.status(200).send('OK');
+});
+
 // Endpoint para devolver imágenes de un capítulo
 app.get('/api/manga/:mangaId/cap/:capitulo', (req, res) => {
   const { mangaId, capitulo } = req.params;
