@@ -8,7 +8,14 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
-app.use(express.static('public')); // Carpeta donde están los archivos HTML y recursos
+
+// Servir archivos estáticos desde la carpeta 'public'
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Ruta para la página principal
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 // Endpoint para devolver imágenes de un capítulo
 app.get('/api/manga/:mangaId/cap/:capitulo', (req, res) => {
