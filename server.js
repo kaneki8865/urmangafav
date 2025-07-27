@@ -17,6 +17,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// Ruta de prueba para verificar que el servidor está activo
+app.get('/ping', (req, res) => {
+  res.send('pong');
+});
+
 // Endpoint para devolver imágenes de un capítulo
 app.get('/api/manga/:mangaId/cap/:capitulo', (req, res) => {
   const { mangaId, capitulo } = req.params;
